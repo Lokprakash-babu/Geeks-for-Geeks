@@ -1,0 +1,30 @@
+
+//This program is a modification of Dutch national flag algorithm. Array has to be arranged in such a way that number less than "a" one side.
+//Number less than "b" and greater than "a" at center.
+//number greater than "b" to the right.
+
+vector<int> threeWayPartition(vector<int> arr, int a, int b)
+{
+    int low=0, reader=0, high=arr.size()-1;
+    
+    while(reader<=high){
+        if(arr[reader]<a){
+            swap(arr[reader], arr[low]);
+            reader++;
+            low++;
+        }
+        else if((arr[reader]>=a) &&(arr[reader]<=b)){
+            reader++;
+        }
+        else if(arr[reader]>b){
+            swap(arr[reader], arr[high]);
+            high--;
+        }
+    }
+    vector<int>k;
+    for(int i=0; i<arr.size(); i++){
+        k.push_back(arr[i]);
+    }
+    return k;
+    
+}
