@@ -1,0 +1,36 @@
+
+//This is Dutch national flag algorithm to segreggate array as 0s, 1s, and 2s.
+
+
+void segragate012(int arr[], int n)
+{
+    int low=0, reader=0, high=n-1;
+    
+    while(reader<=high){
+        switch(arr[reader]){
+            case 0:
+            // arr[low]^=arr[reader];
+            // arr[reader]^=arr[low];
+            // arr[low]^=arr[reader];
+            swap(arr[low], arr[reader]);
+            low++;
+            reader++;
+            break;
+            
+            case 1:
+            reader++;
+            break;
+            
+            case 2:
+            // arr[high]^=arr[reader];
+            // arr[reader]^=arr[high];
+            // arr[high]^=arr[reader];
+            swap(arr[high], arr[reader]);
+            high--;
+            break;
+            
+        }
+    }
+    
+    
+}
