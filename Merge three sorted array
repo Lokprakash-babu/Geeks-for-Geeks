@@ -1,0 +1,49 @@
+// merge three sorted array
+
+Vector mergeThree(Vector& A, Vector& B, Vector& C) 
+{ 
+    vector<int>arr;
+    int i=0, j=0;
+    while(i<A.size() && j< B.size()){
+        if(A[i]>B[j]){
+            arr.push_back(B[j]);
+            j++;
+        }
+        else if(A[i]<=B[j]){
+            arr.push_back(A[i]);
+            i++;
+        }
+    }
+    while(i!=A.size()){
+        arr.push_back(A[i]);
+        i++;
+    }
+    while(j!=B.size()){
+        arr.push_back(B[j]);
+        j++;
+    }
+    
+    vector<int>arr2;
+    i=0;
+    j=0;
+    while(i<arr.size() && j< C.size()){
+        if(arr[i]>C[j]){
+            arr2.push_back(C[j]);
+            j++;
+        }
+        else if(arr[i]<=C[j]){
+            arr2.push_back(arr[i]);
+            i++;
+        }
+    }
+    while(i!=arr.size()){
+        arr2.push_back(arr[i]);
+        i++;
+    }
+    while(j!=C.size()){
+        arr2.push_back(C[j]);
+        j++;
+    }
+    
+  return arr2;  
+} 
