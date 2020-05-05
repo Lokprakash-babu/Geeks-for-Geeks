@@ -1,0 +1,29 @@
+string caseSort(string str, int n){
+    
+    // your code here
+    vector<char>lower;
+    vector<char>upper;
+    for(int i=0; i<n; i++){
+        if((97<=(int)str[i]) && ((int)str[i]<=122))
+        lower.push_back(str[i]);
+        else
+        upper.push_back(str[i]);
+    }
+    sort(lower.begin(), lower.end());
+    sort(upper.begin(), upper.end());
+    int k=0,z=0;
+    string s;
+    for(int i=0; i<n; i++){
+        if((97<=(int)str[i]) && ((int)str[i]<=122))
+        {
+            s+=lower[k];
+            k++;
+        }
+        else
+        {
+            s+=upper[z];
+            z++;
+        }
+    }
+    return s;
+}
