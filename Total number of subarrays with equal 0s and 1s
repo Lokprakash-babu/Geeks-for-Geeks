@@ -1,0 +1,33 @@
+long long int countSubarrWithEqualZeroAndOne(int arr[], int n)
+{
+    unordered_map<int, int> map;
+    for(int i=0; i<n; i++){
+        arr[i]=(arr[i]==0)?-1:1;
+    }
+    
+    long long int sum=0, count=0;
+    
+    for(int i=0; i<n; i++){
+        sum+=arr[i];
+        if(map.find(sum)!=map.end()){
+            if(sum==0){
+                map[sum]++;
+                count+=map[sum];
+            }
+            else{
+                count+=map[sum];
+                map[sum]++;
+            }
+        }
+        else{
+            if(sum==0){
+                map[sum]++;
+                count+=map[sum];
+            }
+            else{
+                map[sum]++;
+            }
+        }
+    }
+    return count;
+}
