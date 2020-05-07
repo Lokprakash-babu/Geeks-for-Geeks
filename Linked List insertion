@@ -1,0 +1,31 @@
+Node *t = NULL;
+// function inserts the data in front of the list
+Node *insertAtBegining(Node *head, int newData) {
+   // Your code here
+    Node *n = new Node(newData);
+    if(head ==NULL)
+    {
+        head = n;
+        t = n;
+        return head;
+    }
+    n->next = head;
+    head = n;
+    return head;
+}
+
+
+// function appends the data at the end of the list
+Node *insertAtEnd(Node *head, int newData)  {
+   // Your code here
+   Node *n = new Node(newData);
+   if(head == NULL)
+   {
+       head = n;
+       t = n;
+       return head;
+   }
+   t->next = n;
+   t = t->next;
+   return head;
+}
