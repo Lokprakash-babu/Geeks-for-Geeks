@@ -1,0 +1,34 @@
+Node* insertInMiddle(Node* head, int x)
+{
+	// Cpde here
+	Node *curr=head;
+	Node *change=head;
+	int n=0;
+	while(curr!=NULL){
+	    curr=curr->next;
+	    n++;
+	}
+	curr=head;
+	if(n%2!=0){
+	for(register int i=1; i<=n/2; i++){
+	    curr=change->next;
+	    change=curr;
+	}
+	Node *s=curr->next;
+	Node *temp=new Node(x);
+	curr->next=temp;
+	temp->next=s;
+	return head;
+	}
+	else{
+	    for(register int i=1; i<n/2; i++){
+	    curr=change->next;
+	    change=curr;
+	}
+	Node *s=curr->next;
+	Node *temp=new Node(x);
+	curr->next=temp;
+	temp->next=s;
+	return head;
+	}
+}
