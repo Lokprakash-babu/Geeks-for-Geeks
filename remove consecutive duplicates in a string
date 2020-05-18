@@ -1,0 +1,20 @@
+
+string removeConsecutiveDuplicates(string s)
+{
+    stack<int>st;
+    string sa;
+    for(int i=0; i<s.length(); i++){
+        if(st.empty()){
+            st.push(s[i]);
+            sa +=s[i];
+        }
+        else if((char)st.top()==s[i]){
+            continue;
+        }
+        else{
+            st.push(s[i]);
+            sa+=s[i];
+        }
+    }
+    return sa;
+}
