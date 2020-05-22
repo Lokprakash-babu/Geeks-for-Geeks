@@ -1,0 +1,29 @@
+#define ll long long
+int getId(int m[MAX][MAX], int n)
+{
+    //Your code here
+    stack<int>st;
+    for(int i=0; i<n; i++){
+        st.push(i);
+    }
+    
+    while(st.size()>1){
+        ll a=st.top();
+        st.pop();
+        ll b=st.top();
+        st.pop();
+        if(m[a][b]){
+            st.push(b);
+        }
+        else{
+            st.push(a);
+        }
+    }
+    ll x=st.top();
+    for(int i=0; i<n;i++){
+        if(i!=x && (m[x][i]!=0 || m[i][x]==0))
+        return -1;
+    }
+    return st.top();
+    
+}
