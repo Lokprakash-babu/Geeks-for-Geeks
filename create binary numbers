@@ -1,0 +1,15 @@
+vector<string> generate(ll n)
+{
+	queue<string>q;
+	q.push("1");
+	vector<string>st;
+	
+	while(n--){
+	    string curr=q.front();
+	    st.push_back(curr);
+	    q.pop();
+	    q.push(curr+"0");
+	    q.push(curr+"1");
+	}
+	return st;
+}
