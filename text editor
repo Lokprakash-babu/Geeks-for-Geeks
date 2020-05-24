@@ -1,0 +1,71 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+#define ll long long
+#define vi vector<long long>
+#define r(i, a) for(int i=0; i<a; i++)
+#define re(i, a, b) for(int i=a; i<b; i++)
+#define inp(a,b) cin>>a>>b
+#define in(a) cin>>t
+#define pb push_back
+#define mod 1000000007
+#define ma unordered_map<long long>
+#define se unordered_set<long long>
+#define i insert
+
+
+// bool sie[900000001];
+
+// void sieve(){
+//     int maxn=90000000;
+//     for(ll i=2; i*i<=maxn; i++){
+//         if(!sie[i]){
+//             for(int j=i*i; j<=maxn; j++){
+//                 sie[j]=true;
+//             }
+//         }
+//     }
+// }
+
+
+
+int main(){
+
+ios_base::sync_with_stdio(false);
+cin.tie(NULL);
+cout.tie(NULL);
+
+int t, type, k;
+string s, str;
+stack<string>stac;
+cin >> t;
+for(ll i=1; i<=t; i++)
+{
+    cin>>type;
+    if(type==1){
+        cin>>str;
+        stac.push(s);
+        s+=str;
+//        cout<<"debug "<<s<<endl;
+    }
+    else if(type == 2){
+        cin>>k;
+        stac.push(s);
+        int len=s.length();
+        s.erase(s.begin()+len-k, s.end());
+//        cout<<"debug "<<s<<endl;
+    }
+    else if(type ==3){
+        int ind;
+        cin>>ind;
+        cout<<s[ind-1]<<endl;
+//        cout<<"debug "<<s<<endl;
+    }
+    else{
+        s=stac.top();
+        stac.pop();
+    }
+}
+return 0;
+}
+
