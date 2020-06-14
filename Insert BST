@@ -1,0 +1,40 @@
+
+/* The structure of a BST node is as follows:
+
+struct Node {
+    int data;
+    Node *left;
+    Node *right;
+
+    Node(int val) {
+        data = val;
+        left = right = NULL;
+    }
+};
+
+*/
+
+// The function returns the root of the BST (currently rooted at 'root') 
+// after inserting a new Node with value 'Key' into it. 
+Node* insert(Node* root, int key)
+{
+    
+    Node *curr=root;
+    Node *par = NULL;
+    while(curr!=NULL){
+        par = curr;
+        if(curr->data > key){
+            curr=curr->left;
+        }
+        else if(curr->data < key)
+        curr = curr ->right;
+        else
+        break;
+    }
+    if(curr==NULL){
+    if(par->data < key)
+    par -> right = new Node(key);
+    else 
+    par ->left = new Node(key);}
+    return root;
+}
