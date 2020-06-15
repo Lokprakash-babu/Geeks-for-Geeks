@@ -1,0 +1,36 @@
+
+/*The structure of a BST Node is as follows:
+
+struct Node {
+    int data;
+    Node *left;
+    Node *right;
+
+    Node(int val) {
+        data = val;
+        left = right = NULL;
+    }
+};
+*/
+
+// Returns the LCA of the nodes with values n1 and n2
+// in the BST rooted at 'root' 
+Node* LCA(Node *root, int n1, int n2)
+{
+   
+   if(n2<n1){
+       swap(n1, n2);
+   }
+   if(n1<root->data && n2>root->data){
+       return root;
+   }
+   else if(n1==root -> data || n2==root->data){
+       return root;
+   }
+   else if(n1<root->data && n2 < root ->data){
+       LCA(root->left, n1, n2);
+   }
+   else if(n1>root->data && n2 > root ->data){
+       LCA(root->right, n1, n2);
+   }
+}
