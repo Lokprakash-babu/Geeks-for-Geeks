@@ -1,0 +1,31 @@
+/* The structure of a BST Node is as follows:
+
+struct Node {
+    int data;
+    Node *left;
+    Node *right;
+
+    Node(int val) {
+        data = val;
+        left = right = NULL;
+    }
+};
+*/
+
+// returns an array of node values in the BST (rooted at 'root')
+// that lie in the given range [low, high]
+vector<int > v;
+void traverse(Node *root, int l, int h){
+    if(root!=NULL){
+        traverse(root->left, l, h);
+        if(root->data>=l && root -> data <=h)
+        v.push_back(root->data);
+        traverse(root->right, l, h);
+    }
+}
+vector<int> printNearNodes(Node *root, int low, int high)
+{
+    v.clear();
+  traverse(root, low, high);
+  return v;
+}
