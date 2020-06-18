@@ -1,0 +1,32 @@
+/* Tree node class
+
+struct Node
+{
+    int data; //data of the node
+    Node *left, *right; //left and right references
+
+    // Constructor of tree node
+    Node(int key)
+    {
+        data = key;
+        left = right = NULL;
+    }
+}; */
+
+// Method that prints the bottom view.
+void bottomView(Node *root)
+{
+   map<int, int>m;
+   queue<pair<Node *, int>>q;
+   q.push(make_pair(root,0));
+   while(q.empty()==false){
+       Node *curr = q.front().first;
+       int sec = q.front().second;
+       m[sec] = curr->data;
+       q.pop();
+       if(curr->left!=NULL) q.push(make_pair(curr->left, sec-1));
+       if(curr->right!=NULL) q.push(make_pair(curr->right, sec+1));
+   }
+   for(auto it = m.begin(); it!=m.end(); it++)
+   cout<<it->second<<" ";
+}
