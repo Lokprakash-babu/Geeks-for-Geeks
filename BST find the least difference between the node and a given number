@@ -1,0 +1,35 @@
+/*The Node structure is
+
+struct Node {
+    int data;
+    Node *left;
+    Node *right;
+
+    Node(int val) {
+        data = val;
+        left = right = NULL;
+    }
+};
+*/
+int diff=INT_MAX;
+// Return the minimum absolute difference between any tree node and the integer K
+int minDiff(Node *root, int k)
+{
+    if(root==NULL){
+        return INT_MAX;
+    }
+    if(root->data>k){
+        
+        return min(minDiff(root->left, k), abs(root->data - k));
+        
+    }
+    else if(root -> data < k)
+    
+    {   
+    
+        return min(minDiff(root->right, k), abs(root->data-k));
+        
+    }
+    else 
+    return 0;
+}
