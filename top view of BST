@@ -1,0 +1,32 @@
+//Structure of binary tree
+/*struct Node
+struct Node
+{
+    int data;
+    struct Node* left;
+    struct Node* right;
+    
+    Node(int x){
+        data = x;
+        left = right = NULL;
+    }
+};*/
+
+void topView(struct Node *root)
+{   map<int, int>m;
+    queue<pair<Node *, int>>q;
+    int hd=0;
+    q.push(make_pair(root, hd));
+    while(q.empty()==false){
+        Node *curr = q.front().first;
+        int sec = q.front().second;
+        q.pop();
+        if(m.find(sec)==m.end()){
+            m[sec]=curr->data;
+        }
+        if(curr->left != NULL) q.push(make_pair(curr->left, sec-1));
+        if(curr->right!=NULL) q.push(make_pair(curr->right, sec+1));
+    }
+    for(auto it = m.begin(); it!=m.end(); it++)
+    cout<<it->second<<" ";
+}
