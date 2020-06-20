@@ -1,0 +1,46 @@
+Given a Matrix consisting of 0s and 1s. Find the number of islands of connected 1s present in the matrix. 
+
+
+
+void dfs(vector<int>a[], int n, int m, int i, int j){
+    
+    // for(int r=i-1; r<=i+1; i++){
+    //     for(int c=j-1; c<=j+1; j++){
+    //         if((r>=0 && c>=0) && (r<n && c<m)) 
+    //         {
+    //             if(!(r==i && c==j) && (!vis[r][c]) && arr[r][c])
+    //             {
+    //                 vis[r][c]=true;
+    //                 dfs(arr, n, m, r, c, vis);
+    //             }
+    //         }
+            
+    //     }
+    // }
+    if(i<0||j<0||i>=n||j>=m||a[i][j]==0||a[i][j]==-1)
+    return ;
+    a[i][j]=-1;
+    dfs(a,n,m,i+1,j);
+    dfs(a,n,m,i-1,j);
+    dfs(a,n,m,i,j+1);
+    dfs(a,n,m,i,j-1);
+    dfs(a,n,m,i-1,j-1);
+    dfs(a,n,m,i-1,j+1);
+    dfs(a,n,m,i+1,j-1);
+    dfs(a,n,m,i+1,j+1);
+}
+int findIslands(vector<int> a[], int n, int m) {
+    // vector<vector<bool>> vis(n, vector<bool>(m, false));
+    // Your code here
+    int count=0;
+    for(int i=0; i<n; i++){
+        for(int j=0; j<m; j++){
+            if(a[i][j]==1){
+                count++;
+                dfs(a,n,m, i, j);
+                
+            }
+        }
+    }
+    return count;
+}
