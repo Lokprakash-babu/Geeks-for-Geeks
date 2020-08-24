@@ -1,0 +1,36 @@
+
+/*  Function to check if the given graph contains cycle
+*   V: number of vertices
+*   adj[]: representation of graph
+*/
+bool dfs(int vis[], vector<int>adj[], int rec[], int i){
+    vis[i]=1;
+    rec[i]=1;
+    // cout<<" dfs "<<i<<endl;
+    for(auto k: adj[i]){
+        if(vis[k]==0){
+            if(dfs(vis, adj, rec, k)){
+                return true;
+            }
+            
+        }
+        else if(rec[k]){
+            return true;
+        }
+    }
+    rec[i]=0;
+    return false;
+}
+bool isCyclic(int v, vector<int> adj[])
+{
+    // Your code here
+    int vis[v]={0};
+    int rec[v]={0};
+    unordered_set<int>s;
+    for(int i=0; i<v; i++){
+        if(vis[i]==0){
+            if(dfs(vis, adj, rec, i)){
+                return true;
+            }
+        }
+    }
