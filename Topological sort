@@ -1,0 +1,55 @@
+
+// The Graph structure is as folows
+
+/*  Function which sorts the graph vertices in topological form
+*   N: number of vertices
+*   adj[]: input graph
+*/
+
+// kahn's algorithm 
+
+
+vector<int> topoSort(int v, vector<int> adj[]) {
+    // Your code here
+    int arr[v]={0};
+    
+    for(int i=0; i<v; i++){
+        for(auto j : adj[i]){
+            arr[j]++;
+        }
+    }
+    // for(int i=0; i<v; i++){
+    //     cout<<i<<" "<<arr[i]<<endl;
+    // }
+    queue<int>q;
+    vector<int>vi;
+    for(int i=0; i<v; i++){
+        if(arr[i]==0){
+            // vi.push_back(i);
+            q.push(i);
+        }
+    }
+    
+    while(!q.empty()){
+        int val=q.front();
+        vi.push_back(val);
+        q.pop();
+        
+        for(int i: adj[val]){
+            arr[i]--;
+            if(arr[i]==0){
+                // cout<<"pushed :"<<i<<" "<<val<<endl;
+                // vi.push_back(i);
+                q.push(i);
+            }
+        }
+        
+    }
+    // for(auto i: vi){
+    //     cout<<i<<" ";
+    // }
+    // cout<<endl;
+    return vi;
+    
+   
+}
