@@ -1,0 +1,19 @@
+
+// function to count ways to reach mth stair
+
+long long countWays(int m){
+    // your code here
+    int dp[m+1];
+    dp[1]=1;
+    dp[2]=2;
+    dp[3]=2;
+    for(int i=4; i<=m; i++){
+        if(i%2==0){
+            dp[i]=dp[i-1]+1;
+        }
+        else{
+            dp[i]=dp[i-1];
+        }
+    }
+    return dp[m];
+}
