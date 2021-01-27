@@ -1,0 +1,16 @@
+
+// problem link: https://practice.geeksforgeeks.org/problems/nth-natural-number/1/?track=30-DOC-day-2&batchId=320#
+
+
+long long findNth(long long n)
+{
+    long long base9=0;
+    long long pos=1;
+    while(n>0){
+        base9+=pos*(n%9);
+        n=n/9;
+        pos*=10;
+    }
+    return base9;
+}
+
